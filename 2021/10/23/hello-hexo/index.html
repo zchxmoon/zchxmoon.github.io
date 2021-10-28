@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hello hexo - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="​    个人梳理一下搭建hexo挂载GitHub上的弯路。
+​    简单的搭建博客,并在GitHub上挂载。
+​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdow,"> 
+    <meta name="author" content="zch"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://zchxmoon.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Hello hexo</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Hello hexo</h1>
+        <div class="stuff">
+            <span>十月 23, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+
+            <p>​    个人梳理一下搭建hexo挂载GitHub上的弯路。</p>
+<p>​    简单的搭建博客,并在GitHub上挂载。</p>
+<p>​    Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文    章，在几秒内，即可利用主题生成静态网页。</p>
+<p>​    在GitHub上的挂载还是走了一点弯路。</p>
+<p>ps: md文件里面的图片并没有显示，我在抽空找找原因。</p>
+<h2><span id="1-环境搭建">1. 环境搭建</span></h2><p>​    进入windows终端。</p>
+<h4><span id="11-安装nodejs">1.1 安装node.js</span></h4><p>​    node -v</p>
+<h4><span id="12-安装hexo">1.2 安装Hexo</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>​    安装以后，可以使用以下两种方式执行 Hexo：</p>
+<ol>
+<li><code>npx hexo &lt;command&gt;</code></li>
+<li>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;command&gt;</code>：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;PATH=&quot;$PATH:./node_modules/.bin&quot;&#x27; &gt;&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+
+<h4><span id="13-安装git">1.3 安装git</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version </span><br></pre></td></tr></table></figure>
+
+<h4><span id="14-git配置">1.4 git配置</span></h4><p>​    注册GitHub账号</p>
+<p>​    与git关联</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name 你的英文名                                                   #此英文名不需要跟GitHub账号保持一致</span><br><span class="line">git config --global user.email 你的邮箱                                                      #此邮箱不需要跟GitHub账号保持一致</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4><span id="15-生成密钥">1.5、生成密钥</span></h4><p>右键单击鼠标，点击 Git Bash Here输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Name&quot;</span><br><span class="line">git config --global user.email &quot;Email&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Name和Email是我们注册Github时的用户名和邮箱。</strong></p>
+<p>然后生成密钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;Email&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Email是我们注册Github时的邮箱</strong></p>
+<p>然后会出现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/c/Users/you/.ssh/id_rsa):</span><br><span class="line">//到这里可以直接回车将密钥按默认文件进行存储</span><br></pre></td></tr></table></figure>
+
+<p>回车之后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">//这里是要你输入密码，其实不需要输什么密码，直接回车就行</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+
+<p>接下来会有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in /c/Users/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br></pre></td></tr></table></figure>
+
+<p>这里是各种字母数字组成的字符串，结尾是你的邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The key&#x27;s randomart image is:</span><br></pre></td></tr></table></figure>
+
+<p>这里也是各种字母数字符号组成的字符串</p>
+<p>现在密钥已经生成，一般存放在（/c/Users/you/.ssh/id_rsa.pub.），我们运行下面的命令将密钥复制为粘贴板：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clip &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p><strong>在Github头像下面点击Settings，再点击SSH and GPG keys，新建一个SSH，名字任意。</strong> </p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184242204.png" alt="image-20211025184242204"></p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184340958.png" alt="image-20211025184340958"></p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184450774.png" alt="image-20211025184450774"></p>
+<h2><span id="2-hexo-搭建">2. hexo 搭建</span></h2><h4><span id="21-hexo-初始化"><strong>2.1 hexo 初始化</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ npm install #初始化</span><br><span class="line"></span><br><span class="line">(1)、开启服务</span><br><span class="line">  hexo s #默认4000端口</span><br><span class="line">(2)、关闭服务</span><br><span class="line">  按住ctrl+c即可结束该服务</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184838563.png" alt="image-20211025184838563"><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184751957.png" alt="image-20211025184751957"></p>
+<h4><span id="22-创建和更新文章">2.2 创建和更新文章</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;文章标题&quot;</span><br><span class="line">#清理缓存</span><br><span class="line">hexo clean</span><br><span class="line">#解析生成</span><br><span class="line">hexo g</span><br><span class="line">#运行hexo 服务预览</span><br></pre></td></tr></table></figure>
+
+<h2><span id="3将博客部署到github">3.将博客部署到GitHub</span></h2><h4><span id="31-登录github创建仓库">3.1、登录github创建仓库#</span></h4><ul>
+<li><p>仓库名必须为 [github user name].github.io</p>
+</li>
+<li><p>示例(我的github用户名为：zchxmoon因此我的仓库名如下)</p>
+<p>zchxmoon.github.io</p>
+</li>
+</ul>
+<h4><span id="32-在本地项目中安装git部署插件">3.2、在本地项目中安装git部署插件#</span></h4><p>​    项目文件根目录下打开命令行工具输入如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>修改_config.yml</p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025184947480.png" alt="image-20211025184947480"></p>
+<p>修改最后一行的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type:</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>附：</p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025185308571.png" alt="image-20211025185308571"></p>
+<h4><span id="34-发布到github">3.4 发布到GitHub</span></h4><p>（1）项目根目录下打开命令行工具如下输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>（2）发布成功后输入zchxmoon.github.io访问即可 点击访问我的博客</p>
+<p>ps：不要先搞博客主题，themes下的主题内 .github的文件夹和github文件会影响上传。</p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025190221333.png" alt="image-20211025190221333"></p>
+<h1><span id="4-更换hexo博客默认主题">4、更换Hexo博客默认主题#</span></h1><h4><span id="41-将主题文件下载到本地项目的-themes文件夹下">4.1、将主题文件下载到本地项目的 themes文件夹下#</span></h4><p>(1)、选择主题</p>
+<p>在github中搜索hexo-theme 结果的右上角Sort:Most stars排序方式，选择主题比如：themes/yilia后进行克隆下载</p>
+<p>(2)下载主题（在本地项目根目录下打开命令行工具）</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a> themes/next </p>
+<p>#不知道选什么无脑next</p>
+<h4><span id="42-修改配置文件-_configyml">4.2、修改配置文件 _config.yml#</span></h4><p>(1)、找到：#Extensions项下的 theme:将值换成下载到themes文件夹下的主题文件夹名称并保存</p>
+<h4><span id="43-更新并重新部署">4.3、更新并重新部署#</span></h4><p>(1)、按如下命令依次执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h4><span id="httpshexoiothemes"></span></h4><p>每次更新文章就重复 c g d</p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025190612040.png" alt="image-20211025190612040"></p>
+<p><img src="C:\Users\moon\AppData\Roaming\Typora\typora-user-images\image-20211025190638394.png" alt="image-20211025190638394"></p>
+<p>主题git下会有使用说明</p>
+<p>PS：</p>
+<p>我用的主题：<a target="_blank" rel="noopener" href="https://github.com/Fechin/hexo-theme-diaspora">https://github.com/Fechin/hexo-theme-diaspora</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111614119">https://zhuanlan.zhihu.com/p/111614119</a></p>
+<p>​        <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv9951678?spm_id_from=333.999.0.0%EF%BC%88%E8%BF%99%E4%B8%AA%E4%B8%BB%E8%A6%81%E6%98%AF%E6%9C%89%E8%A7%86%E9%A2%91%EF%BC%89">https://www.bilibili.com/read/cv9951678?spm_id_from=333.999.0.0（这个主要是有视频）</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">1. 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 安装node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 安装Hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 安装git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4 git配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.5、生成密钥</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">2. hexo 搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.0.1.</span> <span class="toc-text">2.1 hexo 初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.2 创建和更新文章</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">3.将博客部署到GitHub</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.0.1.</span> <span class="toc-text">3.1、登录github创建仓库#</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.0.2.</span> <span class="toc-text">3.2、在本地项目中安装git部署插件#</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.4 发布到GitHub</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number"></span> <span class="toc-text">4、更换Hexo博客默认主题#</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.0.1.</span> <span class="toc-text">4.1、将主题文件下载到本地项目的 themes文件夹下#</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.0.2.</span> <span class="toc-text">4.2、修改配置文件 _config.yml#</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.0.3.</span> <span class="toc-text">4.3、更新并重新部署#</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">0.0.4.</span> <span class="toc-text"></span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
